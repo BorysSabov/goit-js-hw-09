@@ -8,6 +8,10 @@ function handleSubmit(evt) {
   const delay = Number(evt.target.elements.delay.value);
   const step = Number(evt.target.elements.step.value);
   const amount = Number(evt.target.elements.amount.value);
+  if (step < 0 || delay < 0 || amount <= 0) {
+    Notiflix.Notify.warning(`All inputs must be > 0`);
+    return;
+  }
   for (let i = 0; i < amount; i++) {
     const position = i + 1;
     const currentDelay = delay + step * i;

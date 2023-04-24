@@ -28,10 +28,12 @@ const options = {
 flatpickr(dateTimePicker, options);
 
 startBtn.disabled = true;
+
 startBtn.addEventListener('click', () => {
   const targetDate = new Date(dateTimePicker.value);
   const intervalId = setInterval(() => {
     const timeLeft = targetDate - new Date();
+    dateTimePicker.disabled = true;
     if (timeLeft <= 0) {
       clearInterval(intervalId);
       Notiflix.Notify.success('Don`t waste your time waiting - take action');
